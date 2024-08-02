@@ -33,7 +33,7 @@ export default function PatientForm() {
 			updatePatient(data);
             toast.success('Paciente Actualizado Correctamente', {
 				position: 'top-center',
-				theme: 'info',
+				theme: 'colored',
 				transition: Zoom,
 				closeOnClick: true,
 				autoClose: 1000,
