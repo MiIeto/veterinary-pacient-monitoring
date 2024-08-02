@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
 import Error from './Error';
 import type { DraftPatient } from '../types';
+import { usePatientStore } from '../store/store';
 
 export default function PatientForm() {
+	//const { addPatient } = usePatientStore()
+	const addPatient = usePatientStore((state) => state.addPatient);
 	const {
 		register,
 		handleSubmit,
@@ -10,7 +13,7 @@ export default function PatientForm() {
 	} = useForm<DraftPatient>();
 
 	const registerPatient = (data: DraftPatient) => {
-		console.log(data);
+		addPatient(data);
 	};
 
 	return (
@@ -45,9 +48,7 @@ export default function PatientForm() {
 							required: 'El nombre es obligatorio',
 						})}
 					/>
-					{errors.name && (
-						<Error>{errors.name?.message}</Error>
-					)}
+					{errors.name && <Error>{errors.name?.message}</Error>}
 				</div>
 
 				<div className='mb-5'>
@@ -91,9 +92,7 @@ export default function PatientForm() {
 							},
 						})}
 					/>
-					{errors.email && (
-						<Error>{errors.email?.message}</Error>
-					)}
+					{errors.email && <Error>{errors.email?.message}</Error>}
 				</div>
 
 				<div className='mb-5'>
@@ -111,9 +110,7 @@ export default function PatientForm() {
 							required: 'La fecha de alta es obligatoria',
 						})}
 					/>
-					{errors.date && (
-						<Error>{errors.date?.message}</Error>
-					)}
+					{errors.date && <Error>{errors.date?.message}</Error>}
 				</div>
 
 				<div className='mb-5'>
